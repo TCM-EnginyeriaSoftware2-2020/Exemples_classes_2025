@@ -27,7 +27,7 @@ class SumaPositiusTest {
 
     @Test
     void testFail()
-    {fail("error");}
+    {fail("això ha de donar un error");}
 
     @Test
     void test_cami1voltaPositiu()
