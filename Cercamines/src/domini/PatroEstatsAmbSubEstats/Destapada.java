@@ -1,13 +1,11 @@
-package domini.PatroEstats;
+package domini.PatroEstatsAmbSubEstats;
 
-import domini.PatroEstatsAmbSubEstats.Desmarcada;
-
-public final class Destapada implements IEstatCasella{
-    private static Destapada intanciaUnica = new Destapada();
+public final class Destapada implements IEstatCasella {
+    private static Destapada instanciaUnica = new Destapada();
     private Destapada(){}
 
-    public static Destapada getIntanciaUnica() {
-        return intanciaUnica;
+    public static Destapada getInstanciaUnica() {
+        return instanciaUnica;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package domini.PatroEstats;
 
-public class TapadaDesmarcada implements IEstatCasella{
+public final class TapadaDesmarcada implements IEstatCasella{
 
     private static TapadaDesmarcada instanciaUnica = new TapadaDesmarcada();
     private TapadaDesmarcada(){}
@@ -21,12 +21,11 @@ public class TapadaDesmarcada implements IEstatCasella{
 
     @Override
     public IEstatCasella destapar() {
-        return new Destapada();
+        return Destapada.getIntanciaUnica();
     }
 
     @Override
     public boolean isVisible() {
-
         return false;
     }
 
