@@ -41,29 +41,14 @@ public class Casella {
 		return this.estat.isMarcada();
 	}
 
-	/* Actualitzar l'estat de la casella */
-	/*private void setEstat(IEstatCasella nouEstat) {
-		if (nouEstat == null) {
-			throw new IllegalArgumentException("Error definir estat casella: l'estat no pot ser nul.");
-		}
-		this.estat = nouEstat;
-	}*/
 
-	public boolean hiHaMina() {
-		return true;
-	}
-
-	public boolean esBuida() {
-		return false;
-	}
-
-	public String getContingut() {
-		if (this.estaDestapada()) {
-			return "Mina";
+	public char getContingut() {
+		if (this.estaDestapada() && this.mina) {
+			return 'M';
 		}
 		if (this.estaMarcadaPosibleMina()) {
-			return "X";
+			return 'X';
 		}
-		return " ";
+		return ' ';
 	}
 }
