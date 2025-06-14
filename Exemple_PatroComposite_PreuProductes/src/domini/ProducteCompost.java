@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProducteCompost extends ProducteAbstracte {
-
 	private List<ProducteAbstracte> productes;
-	private static boolean repe= false;
 
 	public ProducteCompost(String name, double price, String brand) {
 		super(name, price, brand);
@@ -23,36 +21,23 @@ public class ProducteCompost extends ProducteAbstracte {
 	}
 
 	@Override
-	public boolean addProduct(ProducteAbstracte product) {	
-		if (esPotAfegir(product))// IMPORTANT !!!!!!! el producte és compost
-			return this.productes.add(product);
-		return false;
+	public boolean addProduct(ProducteAbstracte nou) {
+		if (!this.esPotAfegir(nou))// IMPORTANT !!!!!!! el producte ï¿½s compost
+			return false;
+		if( nou instanceof ProducteCompost && !((ProducteCompost) nou).esPotAfegir(this))
+			return false;
+		return this.productes.add(nou);
 	}
 
-	private boolean esPotAfegir(ProducteAbstracte product) {		
-		if (product == null)//no afegim productes nuls
-			return false;
-		if (product == this)//no podem afgir el this
-			return false;	
-		if (product instanceof ProducteCompost) {
-			repe = false; //atribut static
-			if (esRepetit (product)) return false;//si el product és compost i ja hi és en el this, no es pot afegir
-			ProducteCompost pc = (ProducteCompost) product;
-			if (pc.esRepetit (this)) return false;//Mirem recursivament que en el product no hi sigui this
+	private boolean esPotAfegir(ProducteAbstracte nou) {
+		if( nou == null) return false;
+		if( nou == this) return false;
+		for (ProducteAbstracte prod: productes) {
+			if( prod == nou) return false;
+			if( prod instanceof ProducteCompost && !((ProducteCompost) prod).esPotAfegir(nou))
+				return false;
 		}
-		return true;//els productes simples poden estar repetits
+		return true;
 	}
-	
-	private boolean esRepetit (ProducteAbstracte product) {
-		for (ProducteAbstracte child : productes) {
-			if (child == product) {
-				repe = true;
-				return repe;
-			}
-			if (child instanceof ProducteCompost && !repe) {
-				((ProducteCompost) child).esRepetit(product);
-			}
-		}
-		return repe;
-	}
+
 }
