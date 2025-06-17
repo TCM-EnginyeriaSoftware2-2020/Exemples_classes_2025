@@ -6,6 +6,7 @@ import java.util.Map;
 public class SensorIndividual implements ISensor {
 
     private static final int[][] RANGEVALUES = new int[][]{{10, 35},{30,60},{0,40},{0,100}};
+
     public enum Tipus { Temperatura, Humitat, Soroll, Aigua};
     private final String nom;
     protected final Tipus tipus;
@@ -23,17 +24,13 @@ public class SensorIndividual implements ISensor {
     }
 
     @Override
-    public String getNom() {
-        return nom;
-    }
+    public String getNom() { return this.nom; }
 
     @Override
     public String obtenirLectura() {
-        return tipus.name()+": "+ lectura;
+        return tipus.name()+": "+ this.lectura;
     }
 
     @Override
-    public String obtenirHistoric() {
-        return obtenirLectura();
-    }
+    public String obtenirHistoric() { return null; }
 }
