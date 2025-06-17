@@ -9,6 +9,8 @@ public class FacadeSistema {
 
     private static int userId;
     private static SistemaMonitoratge sistema;
+
+    private FacadeSistema(){}
     private static void setUsuari(int newUser) throws IOException {
         if(sistema == null || userId != newUser ) {
             userId = newUser;
@@ -39,6 +41,4 @@ public class FacadeSistema {
         setUsuari(newUser);
         return sistema.getTipusUsuari().ordinal();
     }
-
-
 }
