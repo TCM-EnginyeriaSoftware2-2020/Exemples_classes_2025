@@ -1,0 +1,18 @@
+[
+  {
+    "user": 123,
+    "tipus": "domestic",
+    "dispositiu": {
+      "nom": "menjador",
+      "tipus": ["Temperatura", "Humitat"]
+    }
+  },
+  {
+    "user": 456,
+    "tipus": "industrial",
+    "dispositiu": {
+      "nom": "sala principal",
+      "tipus": ["Temperatura", "Humitat"]
+    }
+  }
+]
